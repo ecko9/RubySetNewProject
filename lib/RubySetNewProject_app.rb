@@ -24,9 +24,9 @@ end
 
 ####### INITIALISE GIT
 def git_init
-  Dir.chdir("./#{get_input_dir}/"){%x[#{"git init"}]}
+  #Dir.chdir("./#{get_input_dir}/"){%x[#{"git init"}]}
   #system("git init ")
-  Dir.chdir("./#{get_input_dir}/"){%x[#{"git remote add origin #{get_input_git}"}]}
+  Dir.chdir("./#{get_input_dir}/"){%x[#{"git clone #{get_input_git}"}]}
   #system("git remote add origin #{get_input_git}")
   file = File.open("./#{get_input_dir}/.gitignore", "w")
   file.puts(".env")
@@ -54,7 +54,7 @@ def new_dir_files
 
   # .ENV
   file = File.open("./#{get_input_dir}/.env", "w")
-  file.puts(".env")
+  file.puts("")
   file.close
 
   # README.MD

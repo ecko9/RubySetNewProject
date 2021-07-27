@@ -21,7 +21,7 @@ def new_dir
   Dir.mkdir(get_input_dir)
   Dir.mkdir("./#{get_input_dir}/lib")
   Dir.mkdir("./#{get_input_dir}/db")
-  Dir.mkdir("./#{get_input_dir}/lib/views")
+  Dir.chdir("./#{get_input_dir}/lib"){%x[#{"mkdir views"}]}
 end
 
 ####### INITIALISE GIT
@@ -262,7 +262,7 @@ end
 def perform
   check_input
   new_dir
-  if ARGV[1].empty?
+  if ARGV[1] == nil
   else
   git_init
   end
